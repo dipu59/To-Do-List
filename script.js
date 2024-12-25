@@ -10,7 +10,17 @@ addButton.addEventListener('click', ()=>{
 let textInput = inputField.value.trim();
 if(textInput.length <= 0){
     alert("Please enter a value");
-    return;
+    return false;
+}
+
+if(addButton.value === "Edit"){
+    editTodo.target.previousElementSibling.innerHTML = textInput;
+    addButton.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="4" stroke="currentColor" class="size-6 stroke-white">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+          </svg>`;
+          addButton.value = "Add";
+         inputField.value = "";
+
 }
 else{
 
@@ -36,6 +46,9 @@ else{
     removeBtn.className = 'bg-red-600 px-2 py-1 rounded-md font-semibold text-white'
     list.appendChild(removeBtn);
 
+    ul.appendChild(list);
+    textInput.value = '';
+
 }
 });
 
@@ -44,13 +57,16 @@ else{
 ul.addEventListener('click', (e)=>{
 if(e.target.innerHTML === 'Remove'){
     ul.removeChild(e.target.parentElement);
-
+return false;
 }
 if(e.target.innerHTML === "Edit"){
     inputField.value = e.target.previousElementSibling.innerHTML;
     inputField.focus();
     addButton.value = 'Edit';
+addButton.innerHTML = `Save`
+    addButton.className = 'text-white font-semibold px-2 rounded-lg bg-green-600 px-5'
     editTodo = e;
+
     
 }
 
