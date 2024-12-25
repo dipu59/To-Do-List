@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', function () {
 const inputField = document.querySelector("#inputField");//select input field
 const addButton = document.querySelector("#addButton");//select add button
 const ul = document.querySelector("#ul");//select Dynamic add ul
@@ -70,4 +71,5 @@ addButton.innerHTML = `Save`
     
 }
 
+})
 })
